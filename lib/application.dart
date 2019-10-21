@@ -9,6 +9,17 @@ class NewsApplication extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Demo News App',
       home: HeadlinesScreen(),
+      theme: ThemeData(
+        primaryColor: Colors.blueAccent,
+        backgroundColor: Colors.white,
+        accentColor: Colors.white,
+
+        textTheme: TextTheme(
+          title: TextStyle(
+            color: Colors.white
+          )
+        )
+      ),
     );
   }
 }
