@@ -10,7 +10,7 @@ class HeadlinesRes {
   List<Article> get articles => _articles;
 
   int get totalResults => _totalResults;
-  
+
 }
 
 
