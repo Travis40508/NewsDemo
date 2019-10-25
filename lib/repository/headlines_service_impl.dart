@@ -1,6 +1,7 @@
 import 'package:news_demo/models/headlines_res.dart';
 import 'package:news_demo/repository/headlines_service.dart';
 import 'dart:convert';
+export 'headlines_service.dart';
 import 'package:http/http.dart' show Client;
 
 const String _baseUrl = 'https://newsapi.org/v2';
