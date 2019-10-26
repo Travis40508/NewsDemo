@@ -9,7 +9,7 @@ class HeadlinesBloc extends Bloc {
   final Repository repository = RepositoryImpl();
 
   final _headlinesSubject = PublishSubject<List<Article>>();
-  Observable<List<Article>> get _headlinesStream => _headlinesSubject.stream;
+  Observable<List<Article>> get headlinesStream => _headlinesSubject.stream;
 
   void fetchHeadlines() async {
     repository.fetchArticles()
