@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:news_demo/models/headlines_res.dart';
+import 'package:news_demo/routing/news_content_route.dart';
 import 'package:news_demo/screens/headlines/headlines_bloc.dart';
 import 'package:news_demo/utils/strings.dart';
 import 'package:news_demo/widgets/news_app_bar.dart';
@@ -45,13 +46,18 @@ class _HeadlinesScreenState extends State<HeadlinesScreen> {
             context: context,
             snapshot: snapshot,
             successWidget: ListView.builder(
-              itemCount: snapshot?.data?.length,
-              itemBuilder: (context, index) {
-                Article article = snapshot?.data[index];
+                itemCount: snapshot?.data?.length,
+                itemBuilder: (context, index) {
+                  Article article = snapshot?.data[index];
 
-                return NewsCard(article: article, onClick: () => print('woo!'),);
-              },
-            ));
+                  return NewsCard(
+                    article: article,
+                    onClick: () => Navigator.pushNamed(
+                        context, NewsContentRoute.routeName,
+                        arguments: NewsContentRoute(
+                            title: article.title, url: article.url)),
+                  );
+                }));
       },
     );
   }
