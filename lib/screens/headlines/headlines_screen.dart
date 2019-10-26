@@ -6,7 +6,6 @@ import 'package:news_demo/screens/headlines/headlines_bloc.dart';
 import 'package:news_demo/utils/strings.dart';
 import 'package:news_demo/widgets/news_app_bar.dart';
 import 'package:news_demo/widgets/news_app_scaffold.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:news_demo/widgets/news_card.dart';
 import 'package:news_demo/widgets/stream_handler.dart';
 
