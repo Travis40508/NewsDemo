@@ -21,4 +21,8 @@ class HeadlinesBloc extends Bloc {
     _headlinesSubject.close();
   }
 
+  Future<void> refreshHeadlines() async {
+    _headlinesSubject.sink.add(null);
+    fetchHeadlines();
+  }
 }

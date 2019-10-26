@@ -27,13 +27,17 @@ class _HeadlinesScreenState extends State<HeadlinesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return NewsAppScaffold(
-      context: context,
-      newsAppBar: NewsAppBar(
-        appBarTitle: Strings.headlinesTitle,
+    return RefreshIndicator(
+      backgroundColor: Theme.of(context).primaryColor,
+      onRefresh: () => _bloc.refreshHeadlines(),
+      child: NewsAppScaffold(
         context: context,
+        newsAppBar: NewsAppBar(
+          appBarTitle: Strings.headlinesTitle,
+          context: context,
+        ),
+        scaffoldBody: buildScreenBody(),
       ),
-      scaffoldBody: buildScreenBody(),
     );
   }
 
