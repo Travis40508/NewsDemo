@@ -6,6 +6,7 @@ import 'package:news_demo/utils/strings.dart';
 import 'package:news_demo/widgets/news_app_bar.dart';
 import 'package:news_demo/widgets/news_app_scaffold.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:news_demo/widgets/news_card.dart';
 import 'package:news_demo/widgets/stream_handler.dart';
 
 class HeadlinesScreen extends StatefulWidget {
@@ -14,12 +15,11 @@ class HeadlinesScreen extends StatefulWidget {
 }
 
 class _HeadlinesScreenState extends State<HeadlinesScreen> {
-
   HeadlinesBloc _bloc;
 
   @override
   void didChangeDependencies() {
-    _bloc = BlocProvider.of<HeadlinesBloc> (context);
+    _bloc = BlocProvider.of<HeadlinesBloc>(context);
     _bloc.fetchHeadlines();
 
     super.didChangeDependencies();
@@ -29,7 +29,10 @@ class _HeadlinesScreenState extends State<HeadlinesScreen> {
   Widget build(BuildContext context) {
     return NewsAppScaffold(
       context: context,
-      newsAppBar: NewsAppBar(appBarTitle: Strings.headlinesTitle, context: context,),
+      newsAppBar: NewsAppBar(
+        appBarTitle: Strings.headlinesTitle,
+        context: context,
+      ),
       scaffoldBody: buildScreenBody(),
     );
   }
@@ -38,23 +41,17 @@ class _HeadlinesScreenState extends State<HeadlinesScreen> {
     return StreamBuilder(
       stream: _bloc.headlinesStream,
       builder: (context, AsyncSnapshot<List<Article>> snapshot) {
+        return StreamHandler.streamWidget(
+            context: context,
+            snapshot: snapshot,
+            successWidget: ListView.builder(
+              itemCount: snapshot?.data?.length,
+              itemBuilder: (context, index) {
+                Article article = snapshot?.data[index];
 
-        return StreamHandler.streamWidget(context: context, snapshot: snapshot, successWidget: ListView.builder(
-        itemCount: snapshot?.data?.length,
-          itemBuilder: (context, index) {
-            Article article = snapshot?.data[index];
-
-            return Card(
-              elevation: 8.0,
-              child: Image(
-                fit: BoxFit.cover,
-                image: CachedNetworkImageProvider(
-                    article?.urlToImage
-                ),
-              ),
-            );
-          },
-        ));
+                return NewsCard(article: article, onClick: () => print('woo!'),);
+              },
+            ));
       },
     );
   }
