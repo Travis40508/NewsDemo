@@ -1,6 +1,6 @@
 
 import 'package:news_demo/models/headlines_res.dart';
-import 'package:news_demo/repository/headlines_service_impl.dart';
+import 'package:news_demo/repository/news_service_impl.dart';
 import 'package:news_demo/repository/repository.dart';
 export 'package:news_demo/repository/repository.dart';
 import 'package:rxdart/rxdart.dart';
@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 
 class RepositoryImpl implements Repository {
 
-  final HeadlinesService _headlinesService = HeadlinesServiceImpl();
+  final NewsService _headlinesService = NewsServiceImpl();
 
   @override
   Observable<List<Article>> fetchArticles() {

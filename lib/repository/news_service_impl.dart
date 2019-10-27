@@ -1,8 +1,8 @@
 import 'package:news_demo/models/headlines_res.dart';
-import 'package:news_demo/repository/headlines_service.dart';
+import 'package:news_demo/repository/news_service.dart';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-export 'headlines_service.dart';
+export 'news_service.dart';
 import 'package:http/http.dart' show Client;
 
 const String _baseUrl = 'https://newsapi.org/v2';
@@ -12,7 +12,7 @@ const String _apiKeyParam = 'apiKey=a08fb4100ddf4622ba34a2f2faf6367b';
 const String _countryParam = 'country=us';
 
 
-class HeadlinesServiceImpl implements HeadlinesService {
+class NewsServiceImpl implements NewsService {
 
   Client client = Client();
 
