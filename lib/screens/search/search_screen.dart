@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:news_demo/screens/search/search_bloc.dart';
+import 'package:news_demo/utils/strings.dart';
 import 'package:news_demo/widgets/news_app_scaffold.dart';
 
 
@@ -31,7 +32,11 @@ class _SearchScreenState extends State<SearchScreen> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-
+        TextField(
+          decoration: InputDecoration(
+            hintText: Strings.searchHint
+          ),
+        ),
       ],
     );
   }
