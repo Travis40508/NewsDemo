@@ -27,7 +27,7 @@ class SearchBloc extends Bloc {
   SearchBloc.withMocks({@required final Repository repository}) {
     this._repository = repository;
   }
-  
+
   void onTextChanged(final String query) {
     if (_debounce?.isActive ?? false) {
       _debounce.cancel();

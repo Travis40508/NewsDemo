@@ -30,7 +30,7 @@ class NewsCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      article.title,
+                      article?.title ?? Strings.emptyText,
                       style: TextStyle(
                           fontSize: 18.0,
                         fontWeight: FontWeight.bold
@@ -40,7 +40,7 @@ class NewsCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                        article.description,
+                        article?.description ?? Strings.emptyText,
                       style: TextStyle(
                         fontSize: 16.0
                       ),

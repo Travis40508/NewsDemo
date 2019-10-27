@@ -29,10 +29,11 @@ class HeadlinesServiceImpl implements HeadlinesService {
 
   @override
   Future<NewsRes> searchNews({@required String query}) async {
-    final String _url = '$_baseUrl$_everythingParam?$_apiKeyParam&$query';
+    final String _url = '$_baseUrl$_everythingParam?$_apiKeyParam&q=$query';
     final res = await client.get(_url);
     final json = jsonDecode(res.body);
 
+    print('@@@@ - $_url');
     print('response for fetchEverything - $json');
 
     return NewsRes.fromJson(json);
