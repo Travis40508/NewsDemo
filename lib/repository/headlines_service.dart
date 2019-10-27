@@ -1,5 +1,5 @@
 import 'package:news_demo/models/headlines_res.dart';
 
 abstract class HeadlinesService {
-  Future<HeadlinesRes> fetchHeadlines();
+  Future<NewsRes> fetchHeadlines();
 }

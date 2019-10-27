@@ -15,14 +15,14 @@ class HeadlinesServiceImpl implements HeadlinesService {
   Client client = Client();
 
   @override
-  Future<HeadlinesRes> fetchHeadlines() async {
+  Future<NewsRes> fetchHeadlines() async {
     final String _url = '$_baseUrl$_topHeadlinesParam?$_countryParam&$_apiKeyParam';
     final res = await client.get(_url);
     final json = jsonDecode(res.body);
 
     print('response for fetchHeadlines - $json');
 
-    return HeadlinesRes.fromJson(json);
+    return NewsRes.fromJson(json);
   }
 
 }

@@ -12,7 +12,7 @@ class MockResponses {
     articles.add(article);
     articles.add(article2);
 
-    HeadlinesRes res = HeadlinesRes(1, articles);
+    NewsRes res = NewsRes(1, articles);
 
     return res.articles;
   }

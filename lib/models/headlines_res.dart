@@ -1,12 +1,12 @@
 
-class HeadlinesRes {
+class NewsRes {
   final int _totalResults;
   final List<Article> _articles;
 
 
-  HeadlinesRes(this._totalResults, this._articles);
+  NewsRes(this._totalResults, this._articles);
 
-  HeadlinesRes.fromJson(Map<String, dynamic> parsedJson)
+  NewsRes.fromJson(Map<String, dynamic> parsedJson)
       : _totalResults = parsedJson['totalResults'],
         _articles = (parsedJson['articles'] as List).map((article) => Article.fromJson(article)).toList();
 
