@@ -16,6 +16,7 @@ class HeadlinesBloc extends Bloc {
         .listen((articles) => _headlinesSubject.sink.add(articles), onError: (e) => _headlinesSubject.sink.addError(e));
   }
 
+  HeadlinesBloc();
   HeadlinesBloc.withMocks({this.repository});
 
   @override
