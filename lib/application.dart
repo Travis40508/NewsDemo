@@ -43,7 +43,8 @@ class NewsApplication extends StatelessWidget {
             color: Colors.white
           ),
           subtitle: TextStyle(
-            fontSize: 18.0
+            fontSize: 18.0,
+            fontWeight: FontWeight.normal
           )
         )
       ),
