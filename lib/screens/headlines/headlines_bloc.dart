@@ -6,15 +6,17 @@ import 'package:rxdart/rxdart.dart';
 
 class HeadlinesBloc extends Bloc {
 
-  final Repository repository = RepositoryImpl();
+  Repository repository = RepositoryImpl();
 
   final _headlinesSubject = PublishSubject<List<Article>>();
   Observable<List<Article>> get headlinesStream => _headlinesSubject.stream;
 
   void fetchHeadlines() async {
     repository.fetchArticles()
-        .listen((articles) => _headlinesSubject.sink.add(articles));
+        .listen((articles) => _headlinesSubject.sink.add(articles), onError: (e) => _headlinesSubject.sink.addError(e));
   }
+
+  HeadlinesBloc.withMocks({this.repository});
 
   @override
   void dispose() {
@@ -25,4 +27,8 @@ class HeadlinesBloc extends Bloc {
     _headlinesSubject.sink.add(null);
     fetchHeadlines();
   }
+
+  //Using a getting to keep this immutable
+  PublishSubject get headlinesSubject => _headlinesSubject;
+
 }

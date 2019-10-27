@@ -3,6 +3,9 @@ class HeadlinesRes {
   final int _totalResults;
   final List<Article> _articles;
 
+
+  HeadlinesRes(this._totalResults, this._articles);
+
   HeadlinesRes.fromJson(Map<String, dynamic> parsedJson)
       : _totalResults = parsedJson['totalResults'],
         _articles = (parsedJson['articles'] as List).map((article) => Article.fromJson(article)).toList();
@@ -22,6 +25,10 @@ class Article {
   final String _urlToImage;
   final String _publishedAt;
   final String _content;
+
+
+  Article(this._author, this._title, this._description, this._url,
+      this._urlToImage, this._publishedAt, this._content);
 
   Article.fromJson(Map<String, dynamic> parsedJson)
     : _author = parsedJson['author'],

@@ -20,4 +20,7 @@ class NewsContentBloc extends Bloc {
     _pageIndexSubject.close();
   }
 
+  //Using a getter to keep our subject immutable
+  PublishSubject<int> get pageIndexSubject => _pageIndexSubject;
+
 }
