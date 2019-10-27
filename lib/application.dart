@@ -8,6 +8,7 @@ import 'package:news_demo/screens/newscontent/news_content_bloc.dart';
 import 'package:news_demo/screens/newscontent/news_content_screen.dart';
 import 'package:news_demo/screens/search/search_bloc.dart';
 import 'package:news_demo/screens/search/search_screen.dart';
+import 'package:news_demo/utils/strings.dart';
 
 
 class NewsApplication extends StatelessWidget {
@@ -15,13 +16,13 @@ class NewsApplication extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Demo News App',
+      title: Strings.applicationName,
       home: BlocProvider(
         bloc: HeadlinesBloc(),
         child: HeadlinesScreen(),
       ),
       routes: {
-        
+
         NewsContentRoute.routeName: (context) => BlocProvider(
           bloc: NewsContentBloc(),
           child: NewsContentScreen(),

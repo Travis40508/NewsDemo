@@ -2,6 +2,6 @@
 import 'package:flutter/foundation.dart';
 
 class SearchRoute {
-  static const routeName = '/searchRoute';
+  static const String routeName = '/searchRoute';
 
 }
