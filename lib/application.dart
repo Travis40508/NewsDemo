@@ -30,8 +30,8 @@ class NewsApplication extends StatelessWidget {
 
         SearchRoute.routeName: (context) => BlocProvider(
           bloc: SearchBloc(),
-          child: SearchScreen(),
-        ),
+          child: SafeArea(child: SearchScreen(),
+          )),
       },
       theme: ThemeData(
         primaryColor: Colors.blueAccent,
