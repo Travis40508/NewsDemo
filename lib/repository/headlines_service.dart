@@ -3,5 +3,5 @@ import 'package:flutter/foundation.dart';
 
 abstract class HeadlinesService {
   Future<NewsRes> fetchHeadlines();
-  Future<NewsRes> searchNews({@required String query});
+  Future<NewsRes> searchNews({@required final String query});
 }

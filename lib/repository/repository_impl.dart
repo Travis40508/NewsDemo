@@ -4,6 +4,7 @@ import 'package:news_demo/repository/headlines_service_impl.dart';
 import 'package:news_demo/repository/repository.dart';
 export 'package:news_demo/repository/repository.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:flutter/foundation.dart';
 
 class RepositoryImpl implements Repository {
 
@@ -13,6 +14,12 @@ class RepositoryImpl implements Repository {
   Observable<List<Article>> fetchArticles() {
     return Observable.fromFuture(_headlinesService.fetchHeadlines())
         .map((res) => res.articles);
+  }
+
+  @override
+  Observable<List<Article>> searchNews({@required final String query}) {
+    return Observable.fromFuture(_headlinesService.searchNews(query: query))
+    .map((res) => res.articles);
   }
 
 }
