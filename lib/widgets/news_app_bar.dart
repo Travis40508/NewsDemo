@@ -5,8 +5,9 @@ class NewsAppBar extends AppBar {
 
   final String appBarTitle;
   final BuildContext context;
+  final List<Widget> appBarActions;
 
-  NewsAppBar({@required this.appBarTitle, @required this.context});
+  NewsAppBar({@required this.appBarTitle, @required this.context, this.appBarActions});
 
   @override
   Color get backgroundColor => Theme.of(context).primaryColor;
@@ -19,4 +20,7 @@ class NewsAppBar extends AppBar {
 
   @override
   bool get centerTitle => true;
+
+  @override
+  List<Widget> get actions => appBarActions;
 }
