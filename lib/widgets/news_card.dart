@@ -20,7 +20,7 @@ class NewsCard extends StatelessWidget {
               child: Image(
                 fit: BoxFit.cover,
                 image: CachedNetworkImageProvider(
-                  article?.urlToImage,
+                  article?.urlToImage ?? Strings.noImageUrl,
                 ),
               ),
             ),
