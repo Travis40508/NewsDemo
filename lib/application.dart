@@ -41,6 +41,9 @@ class NewsApplication extends StatelessWidget {
         textTheme: TextTheme(
           title: TextStyle(
             color: Colors.white
+          ),
+          subtitle: TextStyle(
+            fontSize: 18.0
           )
         )
       ),
