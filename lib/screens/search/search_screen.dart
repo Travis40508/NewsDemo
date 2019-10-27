@@ -56,6 +56,7 @@ class _SearchScreenState extends State<SearchScreen> {
           stream: _bloc.searchedArticlesStream,
           builder: (context, AsyncSnapshot<List<Article>> snapshot) {
             return StreamHandler.streamWidget(
+              shouldLoad: _controller.text.isNotEmpty ? true : false,
                 context: context,
                 snapshot: snapshot,
                 successWidget: Expanded(

@@ -11,7 +11,7 @@ import 'package:rxdart/rxdart.dart';
 
 class SearchBloc extends Bloc {
 
-  static const int INPUT_DELAY = 500;
+  static const int INPUT_DELAY = 750;
   Repository _repository = RepositoryImpl();
   Timer _debounce;
 

@@ -53,6 +53,7 @@ class _HeadlinesScreenState extends State<HeadlinesScreen> {
       stream: _bloc.headlinesStream,
       builder: (context, AsyncSnapshot<List<Article>> snapshot) {
         return StreamHandler.streamWidget(
+          shouldLoad: true,
             context: context,
             snapshot: snapshot,
             successWidget: ListView.builder(
