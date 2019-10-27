@@ -13,6 +13,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
 
   SearchBloc _bloc;
+  TextEditingController _controller = TextEditingController();
 
   @override
   void didChangeDependencies() {
@@ -32,9 +33,21 @@ class _SearchScreenState extends State<SearchScreen> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        TextField(
-          decoration: InputDecoration(
-            hintText: Strings.searchHint
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            controller: _controller,
+            decoration: InputDecoration(
+              hintText: Strings.searchHint,
+              border: OutlineInputBorder(),
+              prefixIcon: Icon(Icons.search),
+              suffixIcon: IconButton(
+                icon: Icon(Icons.clear),
+                onPressed: () => _controller.clear(),
+              ),
+            ),
+            maxLines: 1,
+            onChanged: (query) => _bloc.onTextChanged(query),
           ),
         ),
       ],
