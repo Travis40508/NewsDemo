@@ -42,11 +42,7 @@ class SearchBloc extends Bloc {
     }
   }
 
-  ///Keeps subject immutable
-  PublishSubject<List<Article>> get searchedArticles => _searchedArticles;
-
   ///Keeps timer immutable
   Timer get debounce => _debounce;
-
 
 }

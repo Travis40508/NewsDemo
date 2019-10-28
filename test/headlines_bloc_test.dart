@@ -15,7 +15,7 @@ void main() {
     when(repository.fetchArticles()).thenAnswer((_) => Observable.just(res));
     final headlinesBloc = HeadlinesBloc.withMocks(repository: repository);
 
-    expectLater(headlinesBloc.headlinesSubject, emitsInOrder([
+    expectLater(headlinesBloc.headlinesStream, emitsInOrder([
       emits(res)
     ]));
 
@@ -30,7 +30,7 @@ void main() {
 
     final headlinesBloc = HeadlinesBloc.withMocks(repository: repository);
 
-    expectLater(headlinesBloc.headlinesSubject, emitsInOrder([
+    expectLater(headlinesBloc.headlinesStream, emitsInOrder([
       emitsError(res)
     ]));
 
@@ -44,7 +44,7 @@ void main() {
 
     final headlinesBloc = HeadlinesBloc.withMocks(repository: repository);
 
-    expectLater(headlinesBloc.headlinesSubject, emitsInOrder([
+    expectLater(headlinesBloc.headlinesStream, emitsInOrder([
       emits(null),
     ]));
 
@@ -58,7 +58,7 @@ void main() {
 
     final headlinesBloc = HeadlinesBloc.withMocks(repository: repository);
 
-    expectLater(headlinesBloc.headlinesSubject, emitsInOrder([
+    expectLater(headlinesBloc.headlinesStream, emitsInOrder([
       emits(null),
       emits(res),
     ]));
@@ -66,12 +66,4 @@ void main() {
     headlinesBloc.refreshHeadlines();
   });
 
-  test('verifying that dispose closes our stream', () {
-    final repository = RepositoryMock();
-    final headlinesBloc = HeadlinesBloc.withMocks(repository: repository);
-
-    headlinesBloc.dispose();
-
-    expect(headlinesBloc.headlinesSubject.isClosed, true);
-  });
 }

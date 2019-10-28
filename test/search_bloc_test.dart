@@ -16,7 +16,7 @@ void main() {
     
     final bloc = SearchBloc.withMocks(repository: repository);
     
-    expectLater(bloc.searchedArticles, emitsInOrder([
+    expectLater(bloc.searchedArticlesStream, emitsInOrder([
       emits(res)
     ]));
 
@@ -30,7 +30,7 @@ void main() {
 
     final bloc = SearchBloc.withMocks(repository: repository);
 
-    expectLater(bloc.searchedArticles, emitsInOrder([
+    expectLater(bloc.searchedArticlesStream, emitsInOrder([
       emitsError(res),
     ]));
 
@@ -61,12 +61,4 @@ void main() {
     expect(bloc.debounce, isNotNull);
   });
 
-  test('testing disposing of subjects', () {
-    final repository = RepositoryMock();
-
-    final bloc = SearchBloc.withMocks(repository: repository);
-    bloc.dispose();
-
-    expect(bloc.searchedArticles.isClosed, true);
-  });
 }

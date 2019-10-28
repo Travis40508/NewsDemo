@@ -29,7 +29,4 @@ class HeadlinesBloc extends Bloc {
     fetchHeadlines();
   }
 
-  ///Using a getting to keep this immutable
-  PublishSubject get headlinesSubject => _headlinesSubject;
-
 }
