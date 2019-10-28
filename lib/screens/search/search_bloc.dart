@@ -32,10 +32,21 @@ class SearchBloc extends Bloc {
     if (_debounce?.isActive ?? false) {
       _debounce.cancel();
     }
-    _debounce = Timer(const Duration(milliseconds: INPUT_DELAY), () {
-      _repository.searchNews(query: query)
-          .listen((articles) => _searchedArticles.sink.add(articles), onError: (e) => _searchedArticles.sink.addError(e));
-    });
+
+    if (query.length > 0) {
+      _debounce = Timer(const Duration(milliseconds: INPUT_DELAY), () {
+        _repository.searchNews(query: query)
+            .listen((articles) => _searchedArticles.sink.add(articles),
+            onError: (e) => _searchedArticles.sink.addError(e));
+      });
+    }
   }
+
+  //using a getter to maintain immutability
+  PublishSubject<List<Article>> get searchedArticles => _searchedArticles;
+
+  //keeping timer immutable
+  Timer get debounce => _debounce;
+
 
 }
