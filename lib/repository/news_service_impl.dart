@@ -10,7 +10,7 @@ const String _topHeadlinesParam = '/top-headlines';
 const String _everythingParam = '/everything';
 const String _apiKeyParam = 'apiKey=a08fb4100ddf4622ba34a2f2faf6367b';
 const String _countryParam = 'country=us';
-const int timeoutDuration = 1000;
+const int timeoutDuration = 7000;
 
 
 class NewsServiceImpl implements NewsService {

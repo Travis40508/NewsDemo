@@ -42,10 +42,10 @@ class SearchBloc extends Bloc {
     }
   }
 
-  //using a getter to maintain immutability
+  ///Keeps subject immutable
   PublishSubject<List<Article>> get searchedArticles => _searchedArticles;
 
-  //keeping timer immutable
+  ///Keeps timer immutable
   Timer get debounce => _debounce;
 
 

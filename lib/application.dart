@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:news_demo/routing/news_content_route.dart';
 import 'package:news_demo/routing/search_route.dart';
@@ -14,6 +15,12 @@ import 'package:news_demo/utils/strings.dart';
 class NewsApplication extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ///Locks screen to Portrait mode
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: Strings.applicationName,
