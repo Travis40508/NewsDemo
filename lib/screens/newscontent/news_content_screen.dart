@@ -23,6 +23,12 @@ class _NewsContentScreenState extends State<NewsContentScreen> {
   }
 
   @override
+  void dispose() {
+    _bloc.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NewsAppBar(appBarTitle: route.title, context: context,),
