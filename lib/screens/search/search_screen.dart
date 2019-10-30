@@ -24,6 +24,12 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   @override
+  void dispose() {
+    _bloc.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return NewsAppScaffold(
       context: context,
@@ -56,7 +62,7 @@ class _SearchScreenState extends State<SearchScreen> {
           stream: _bloc.searchedArticlesStream,
           builder: (context, AsyncSnapshot<List<Article>> snapshot) {
             return StreamHandler.streamWidget(
-              shouldLoad: _controller.text.isNotEmpty ? true : false,
+              shouldLoad: false,
                 context: context,
                 snapshot: snapshot,
                 successWidget: Expanded(

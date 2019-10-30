@@ -27,6 +27,12 @@ class _HeadlinesScreenState extends State<HeadlinesScreen> {
   }
 
   @override
+  void dispose() {
+    _bloc.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
       backgroundColor: Theme.of(context).primaryColor,
@@ -57,6 +63,7 @@ class _HeadlinesScreenState extends State<HeadlinesScreen> {
             context: context,
             snapshot: snapshot,
             successWidget: ListView.builder(
+              physics: AlwaysScrollableScrollPhysics(),
                 itemCount: snapshot?.data?.length,
                 itemBuilder: (context, index) {
                   Article article = snapshot?.data[index];
