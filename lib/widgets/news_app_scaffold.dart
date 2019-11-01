@@ -7,8 +7,9 @@ class NewsAppScaffold extends Scaffold {
   final BuildContext context;
   final AppBar newsAppBar;
   final Widget scaffoldBody;
+  final bool resizeToAvoidPadding;
 
-  NewsAppScaffold({@required this.context, this.newsAppBar, this.scaffoldBody});
+  NewsAppScaffold({@required this.context, this.newsAppBar, this.scaffoldBody, this.resizeToAvoidPadding});
 
   @override
   Color get backgroundColor => Theme.of(context).backgroundColor;
@@ -18,5 +19,8 @@ class NewsAppScaffold extends Scaffold {
 
   @override
   Widget get body => scaffoldBody;
+
+  @override
+  bool get resizeToAvoidBottomPadding => resizeToAvoidBottomInset;
 
 }

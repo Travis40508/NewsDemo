@@ -4,6 +4,7 @@ import 'package:news_demo/models/headlines_res.dart';
 import 'package:news_demo/routing/news_content_route.dart';
 import 'package:news_demo/screens/search/search_bloc.dart';
 import 'package:news_demo/utils/strings.dart';
+import 'package:news_demo/widgets/loading_widget.dart';
 import 'package:news_demo/widgets/news_app_scaffold.dart';
 import 'package:news_demo/widgets/news_card.dart';
 import 'package:news_demo/widgets/stream_handler.dart';
@@ -34,6 +35,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return NewsAppScaffold(
       context: context,
       scaffoldBody: buildBody(),
+      resizeToAvoidPadding: false,
     );
   }
 
@@ -59,15 +61,21 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ),
         StreamBuilder(
+          initialData: false,
+          stream: _bloc.loadingStream,
+          builder: (context, AsyncSnapshot<bool> isLoading) {
+            return isLoading.data ? NewsLoadingWidget() : Container();
+          },
+        ),
+        StreamBuilder(
           stream: _bloc.searchedArticlesStream,
           builder: (context, AsyncSnapshot<List<Article>> snapshot) {
             return StreamHandler.streamWidget(
-              shouldLoad: false,
                 context: context,
                 snapshot: snapshot,
                 successWidget: Expanded(
                   child: ListView.builder(
-                    shrinkWrap: true,
+                      shrinkWrap: true,
                       itemCount: snapshot?.data?.length,
                       itemBuilder: (context, index) {
                         Article article = snapshot?.data[index];
